@@ -1,7 +1,7 @@
 package com.victoria.library.contrller;
 
-import com.victoria.library.entity.Library;
-import com.victoria.library.service.LibraryService;
+import com.victoria.library.entity.Book;
+import com.victoria.library.service.BookService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,49 +12,49 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/library")
-public class LibraryController {
+public class BookController {
 
     @Autowired
-    private LibraryService libraryService;
+    private BookService bookService;
 
     @Autowired
     private ModelMapper modelMapper;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Library save(@RequestBody Library library){
-        return libraryService.save(library);
+    public Book save(@RequestBody Book library){
+        return bookService.save(library);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Library> getAllLibrary(){
-        return libraryService.getAllLibrary();
+    public List<Book> getAllBook(){
+        return bookService.getAll();
     }
-    // TODO na primeira vez que rodei o getall com o banco vazio ao invez de retonar vazio, deu erro 500 no repository null
 
     @GetMapping("/{id}")
-    public Library getByIdLibrary(@PathVariable("id") Long id){
-        return libraryService.getByID(id)
+    public Book getByIdBook(@PathVariable("id") Long id){
+        return bookService.getByID(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado!"));
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteLibrary(@PathVariable("id") Long id){
-        libraryService.getByID(id)
-                .map(library -> {
-                    libraryService.deleteById(library.getId());
+    public void deleteBook(@PathVariable("id") Long id){
+        bookService.getByID(id)
+                .map(book -> {
+                    bookService.deleteById(book.getId());
                     return Void.TYPE;
                 }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado!"));
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateLibrary(@PathVariable("id") Long id, @RequestBody Library library){
-        libraryService.getByID(id)
-                .map(libraryBase -> {
-                    modelMapper.map(library, libraryBase);
+    public void updateBook(@PathVariable("id") Long id, @RequestBody Book book){
+        bookService.getByID(id)
+                .map(bookBase -> {
+                    modelMapper.map(book, bookBase);
+                    bookService.save(bookBase);
                     return Void.TYPE;
                 }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado!"));
     }

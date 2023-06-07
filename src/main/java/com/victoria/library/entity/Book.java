@@ -14,11 +14,10 @@ import java.io.Serializable;
 @Builder
 @Entity
 @Table(name = "TB_BOOKS")
-public class Library implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Book implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "TITULO", nullable = false)
