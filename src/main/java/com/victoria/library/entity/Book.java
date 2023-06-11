@@ -1,12 +1,15 @@
 package com.victoria.library.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -15,32 +18,33 @@ import java.io.Serializable;
 @Entity
 @Table(name = "TB_BOOKS")
 public class Book implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
 
-    @Column(name = "TITULO", nullable = false)
-    private String titulo;
+    @NotBlank
+    @Column(name = "TITLE")
+    private String title;
 
-    @Column(name = "SUB_TITULO")
-    private String subTitulo;
+    @Column(name = "SUB_TITLE")
+    private String subTitle;
 
-    @Column(name = "TITULO_ORIGINAL")
-    private String tituloOriginal;
+    @NotBlank
+    @Column(name = "AUTHOR")
+    private String author;
 
-    @Column(name = "SUB_TITULO_ORIGINAL")
-    private String subTituloOriginal;
+    @Column(name = "TRANSLATOR")
+    private String translator;
 
-    @Column(name = "AUTOR", nullable = false)
-    private String autor;
+    @NotBlank
+    @Column(name = "GENRO")
+    private List<String> genre;
 
-    @Column(name = "TRADUTOR")
-    private String tradutor;
+    @Column(name = "PAGES")
+    private Long pages;
 
-    @Column(name = "GENERO")
-    private String genero;
-
-    @Column(name = "QTD_PAGINA")
-    private String qtdPagina;
+    @Column(name = "READ_STATUS")
+    private Boolean readStatus = false;
 }
