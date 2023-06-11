@@ -4,6 +4,7 @@ import com.victoria.library.entity.Book;
 import com.victoria.library.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,8 +28,8 @@ public class BookController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create a book record.", method = "POST")
-    public Book save(@RequestBody Book library){
-        return bookService.save(library);
+    public Book save(@RequestBody @Valid Book book){
+        return bookService.save(book);
     }
 
     @GetMapping
