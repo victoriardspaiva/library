@@ -24,6 +24,7 @@ public class Book implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @NotBlank
     @Column(name = "TITLE", nullable = true)
     private String title;
 
