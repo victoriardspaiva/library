@@ -11,7 +11,7 @@
   <img src="assets/logo.png" alt="um gato e uma cachorro abraçados em formato de coração" width="500">
 </h1>
 
-> Projeto final do bootcamp {reprograma} backend, criando CRUD de ONG's e abrigos de animais.
+> Projeto realizado para por em prática estudo voltado para desenvolvimento backend, usando do ecossistema Spring com o Sring Boot.
 
 ### 📑 Índice
 ---
@@ -31,8 +31,8 @@
 - [Implementações futuras](#implementações-futuras)
 
 
-### Problemática 😿
-Grande número de animais abandonados na região metropolitana do Recife.
+### Problemática 
+Para o gerenciamento e catatolagação de sua coleção de livros de sua biblioteca pessoal.
 
 ### Solução 🐶
 Voltado para animais - gatos e cachororos - em situação de vunerabilidade na região metropolitana do Recife procurando uma lar temporário ou uma adoção responsável.
