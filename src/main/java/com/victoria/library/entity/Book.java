@@ -2,6 +2,7 @@ package com.victoria.library.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -39,6 +40,7 @@ public class Book implements Serializable {
     @Column(name = "TRANSLATOR")
     private String translator;
 
+    @NotEmpty
     @Column(name = "GENRE")
     private List<GenreEnum> genreEnum;
 
