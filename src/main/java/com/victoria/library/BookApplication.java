@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-//@OpenAPIDefinition(info = @Info(title = "Projet Library", version = "1", description = "API developed for managing your personal library."))
 public class BookApplication {
 
 	@Bean

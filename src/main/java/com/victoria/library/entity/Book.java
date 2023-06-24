@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,13 +39,15 @@ public class Book implements Serializable {
     @Column(name = "TRANSLATOR")
     private String translator;
 
-    @NotBlank
-    @Column(name = "GENRO")
-    private List<String> genre;
+    @Column(name = "GENRE")
+    private List<GenreEnum> genreEnum;
 
     @Column(name = "PAGES")
     private Long pages;
 
     @Column(name = "READ_STATUS")
     private Boolean readStatus = false;
+
+    @Column(name = "REGISTRATION_DATE")
+    private LocalDateTime registrationDate;
 }

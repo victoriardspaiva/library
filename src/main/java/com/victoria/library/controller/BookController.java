@@ -1,16 +1,24 @@
-package com.victoria.library.contrller;
+package com.victoria.library.controller;
 
 import com.victoria.library.entity.Book;
+import com.victoria.library.entity.GenreEnum;
 import com.victoria.library.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.UUID;
 
 @RestController
@@ -27,15 +35,18 @@ public class BookController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create a book record.", method = "POST")
-    public Book save(@RequestBody Book library){
-        return bookService.save(library);
+    public Book save(@RequestBody @Valid Book book){
+        book.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        return bookService.save(book);
     }
 
     @GetMapping
-    @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Lists all the books in your library.", method = "GET")
-    public List<Book> getAllBook(){
-        return bookService.getAll();
+    public ResponseEntity<Page<Book>> getAllBook(@PageableDefault(
+            size = 2,
+            sort = "id",
+            direction = Sort.Direction.ASC) Pageable pageable){
+        return ResponseEntity.status(HttpStatus.OK).body(bookService.getAll(pageable));
     }
 
     @GetMapping("/{id}")
