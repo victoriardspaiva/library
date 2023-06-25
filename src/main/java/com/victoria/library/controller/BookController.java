@@ -1,7 +1,7 @@
 package com.victoria.library.controller;
 
 import com.victoria.library.entity.Book;
-import com.victoria.library.service.exception.ObjectNotFoudException;
+import com.victoria.library.exception.ObjectNotFoudException;
 import com.victoria.library.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -11,7 +11,6 @@ import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -77,7 +76,7 @@ public class BookController {
             sort = "id",
             direction = Sort.Direction.ASC) Pageable pageable,
                                                     @RequestParam("title") String title) {
-        Page<Book> pageBook = new PageImpl<>(bookService.searchByTitle(title));
+        Page<Book> pageBook = bookService.searchByTitle(title);
         return ResponseEntity.status(HttpStatus.OK).body(pageBook);
     }
 

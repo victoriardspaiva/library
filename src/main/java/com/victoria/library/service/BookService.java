@@ -5,6 +5,7 @@ import com.victoria.library.entity.GenreEnum;
 import com.victoria.library.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -38,10 +39,10 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public List<Book> searchByTitle(String title) {
-        return bookRepository.findByTitleContains(title)
+    public Page<Book> searchByTitle(String title) {
+        return new PageImpl<>(bookRepository.findByTitleContains(title)
                 .stream()
                 .map(Book::converter)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 }

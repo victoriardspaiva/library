@@ -9,5 +9,5 @@ import java.util.UUID;
 
 public interface BookRepository extends JpaRepository<Book, UUID> {
 
-    List<Book> findByTitleContains(String title);
+    Page<Book> findByTitleContains(String title);
 }
