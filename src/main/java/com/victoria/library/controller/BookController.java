@@ -87,15 +87,4 @@ public class BookController {
                     return Void.TYPE;
                 }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado!"));
     }
-
-//    @PutMapping("/")
-//    public ResponseEntity<Object> changeStatus(@RequestParam UUID id, @RequestParam Boolean status){
-//        Optional<Book> bookO = bookService.getByID(id);
-//        if(bookO.isEmpty()) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found.");
-//        }
-////        Book book = new Book();
-////        BeanUtils.copyProperties(bookO, book);
-//        return ResponseEntity.status(HttpStatus.OK).body(bookService.changeStatus(bookO, status));
-//    }
 }

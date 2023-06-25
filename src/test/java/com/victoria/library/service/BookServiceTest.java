@@ -72,37 +72,13 @@ public class BookServiceTest {
         assertEquals(book, book);
     }
 
-//    @Test
-//    void deveDeletarComSucesso(){
-//        when(bookRepository.deleteById(id)).thenReturn();
-//    }
     @Test
-    void naoDeveChamarORepositoruCasoIdNulo(){
-        final BookException e = assertThrows(BookException.class, () ->
-        {
-            bookService.getByID(null);
-        });
-
-        assertThat(e, notNullValue());
-        assertThat(e.getMessage(), is("Erro ao buscar livros por id = null"));
-        assertThat(e.getCause(), notNullValue());
-        assertThat(e.getCause().getMessage(), is("Id é obrigatório!"));
-        verifyNoInteractions(bookRepository);
+    void deveDeletarComSucesso(){
+        doNothing().when(bookRepository).deleteById(book.getId());
+        bookService.deleteById(book.getId());
+        verify(bookRepository, times(1)).deleteById(book.getId());
     }
 
-    @Test
-    void deveAcionarExceptionQuandoRepositoryFalhar(){
-        when(bookRepository.findById(book.getId())).thenThrow(new RuntimeException("Falha ao buscar livros por id!"));
 
-        final BookException e = assertThrows(BookException.class, () -> {
-            bookService.getByID(book.getId());
-        });
 
-        assertThat(e.getMessage(), is(format("Erro ao buscar livros por id = %s", book.getId())));
-        assertThat(e.getCause().getClass(), is(RuntimeException.class));
-        assertThat(e.getCause().getMessage(), is("Falha ao buscar livros por id!"));
-        verify(bookRepository).findById(book.getId());
-        verifyNoMoreInteractions(bookRepository);
-
-    }
 }

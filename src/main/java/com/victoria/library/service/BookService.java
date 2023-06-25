@@ -34,9 +34,4 @@ public class BookService {
     public void deleteById(UUID id){
         bookRepository.deleteById(id);
     }
-
-//    public Book changeStatus(Optional<Book> book, Boolean status) {
-//        book.get().setReadStatus(status);
-//        return bookRepository.save(book);
-//    }
 }
