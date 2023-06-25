@@ -4,29 +4,20 @@
 ![Static Badge](https://img.shields.io/badge/MySQL-black?logo=MySQL&label=database&labelColor=white&color=blue&link=https%3A%2F%2Fwww.mysql.com%2F)
 ![Static Badge](https://img.shields.io/badge/maven-black?logo=Java&label=4.0.0&labelColor=gray&color=orange)
 
-
-
-
-
-http://localhost:8080/swagger-ui/index.html
-
-
-
-
-
-
 ### 📑 Índice
 ---
 
 - [Problemática](#-problemática)
 - [Tecnologias](#-tecnologias)
+- [Objetivos na implementação](#objetivos-na-implementação)
 - [Arquitetura](#-arquitetura)
 - [Orientações](#-orientações)
    - [Pré-requisitos](#-pré-requisitos)
    - [Rodando o Back End (servidor)](#-rodando-o-back-end-servidor)
    - [Rotas, links e métodos](#--rotas-links-e-métodos)
 - [Tratamento de erro](#-orientações)
-- [Objetivos na implementação](#objetivos-na-implementação)
+- [Evoluções Futuras](#evoluções-futuras)
+- [Referencial Teórico](#referencial-teórico)
 
 
 ### ❓ Problemática
@@ -38,10 +29,18 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - Sring Boot;
 - Spring Data JPA;
-- Swagger Open API
+- Swagger Open API;
+- MySQL.
 
-
-
+### Objetivos na implementação
+---
+- [x] Nenhuma query nativa
+- [x] Documentação via Swagger
+- [x] Cobertura de testes acima de 80%
+- [x] Retornos usando de paginação
+- [x] Exception Pattern
+- [x] Stream API
+      
 ### 🧱 Arquitetura
 ---
 ```
@@ -72,8 +71,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ├───README.md
 └───server.js
 ```
-
-
 ### 📌 Orientações
 ---
 ### 📎 Pré-requisitos:
@@ -102,27 +99,31 @@ $ sudo docker-compose -f docker-compose.yml up -d
 A ferramenta de suporte de criação das requisição usada foi o [Postman](https://www.postman.com/), você pode usar a de sua preferência.
 
 #### Variáveis de ambientes: 
+---
 É possivel criar variáveis que sejam visiveis para todo o escopo do projeto, existem alguns beneficios um dele é não deixar o valor exposto, além de poder ser reutilizado sempre que necessário.
 
 Para criar a variavel é necessário na collection > aba Variables preencha na coluna variable da tabela o nome da variavel `URL` e em initial value e current value colocar o valor `http://localhost:9090`
 
 > Na barra de URL `endpoint`, vamos preencher o nome da variavel entre dois cochetes `{{URL}}`.
 
-
-## Recursos:
+### Recursos:
+---
+É possivel conferir a documentação no link abaixo:
+[Swagger](http://localhost:8080/swagger-ui/index.html)
 
 ![assets/recurso.jpg](assets/recurso.jpg)
 
 ### Tratamento de erro
+---
 - [x] Pesquisa não encontrada
 
-### Objetivos na implementação
-- [x] Nenhuma query nativa
-- [x] Documentação via Swagger
-- [x] Cobertura de testes acima de 80%
-- [x] Retornos usando de paginação
-- [x] Exception Pattern
-- [ ] 
+### Evoluções Futuras
+---
+- Maturidade no Exception Pattern e Stream API
+  
+### Referencial Teórico
+---
+- 
 
 
 
