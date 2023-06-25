@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.UUID;
 
+import static java.lang.String.format;
+import static org.springframework.util.Assert.notNull;
+
 @Service
 public class BookService {
 
@@ -31,9 +34,4 @@ public class BookService {
     public void deleteById(UUID id){
         bookRepository.deleteById(id);
     }
-
-//    public Book changeStatus(Optional<Book> book, Boolean status) {
-//        book.get().setReadStatus(status);
-//        return bookRepository.save(book);
-//    }
 }

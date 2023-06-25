@@ -1,9 +1,11 @@
 package com.victoria.library.controller;
 
 import com.victoria.library.entity.Book;
-import com.victoria.library.entity.GenreEnum;
+import com.victoria.library.service.exception.ObjectNotFoudException;
 import com.victoria.library.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
@@ -19,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -51,9 +54,15 @@ public class BookController {
 
     @GetMapping("/{id}")
     @Operation(summary = "List a book by id code.", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Busca realizada com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
+            @ApiResponse(responseCode = "500", description = "Erro ao realizar busca dos dados"),
+    })
     public Book getByIdBook(@PathVariable("id") UUID id){
-        return bookService.getByID(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado!"));
+        Optional<Book> book = bookService.getByID(id);
+        return book.orElseThrow(()-> new ObjectNotFoudException("Livro não encontrado!"));
+
     }
 
     @DeleteMapping("/{id}")
@@ -78,15 +87,4 @@ public class BookController {
                     return Void.TYPE;
                 }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado!"));
     }
-
-//    @PutMapping("/")
-//    public ResponseEntity<Object> changeStatus(@RequestParam UUID id, @RequestParam Boolean status){
-//        Optional<Book> bookO = bookService.getByID(id);
-//        if(bookO.isEmpty()) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found.");
-//        }
-////        Book book = new Book();
-////        BeanUtils.copyProperties(bookO, book);
-//        return ResponseEntity.status(HttpStatus.OK).body(bookService.changeStatus(bookO, status));
-//    }
 }
