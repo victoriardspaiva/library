@@ -53,32 +53,45 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ### 🧱 Arquitetura
 ---
 ```
-├───📂src/
-│   ├───📂controllers/
-│   │   ├───placesController.js
-│   │   └───userController.js
-│   ├───📂database/
-│   │   └───configMongo.js
-│   ├───📂helpers/
-│   │   └───auth.js
-│   ├───📂middlewares/
-│   │   └───auth.js
-│   ├───📂models/
-│   │   ├───placesSchema.js
-│   │   └───userSchema.js
-│   ├───📂routes/
-│   │   ├───placesRouter.js
-│   │   └───userRouter.js
-│   ├───app.js 
-│   └───index.js
-├───.env
-├───.env.example
-├───.gitignore
-├───package-lock.json
-├───package.json
-├───Procfile
-├───README.md
-└───server.js
+📂 assets
+│   └── recurso.png
+├── docker-compose.yml
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── README.md
+├── 📂 src
+   ├── main
+   │   ├── java
+   │   │   └── com
+   │   │       └── victoria
+   │   │           └── 📂library
+   │   │               ├── BookApplication.java
+   │   │               ├── 📂config
+   │   │               │   └── SwaggerConfig.java
+   │   │               ├── 📂controller
+   │   │               │   └── BookController.java
+   │   │               ├── 📂entity
+   │   │               │   ├── Book.java
+   │   │               │   └── GenreEnum.java
+   │   │               ├── 📂repository
+   │   │               │   └── BookRepository.java
+   │   │               └── 📂service
+   │   │                   ├── BookService.java
+   │   │                   └── exception
+   │   │                       └── ObjectNotFoudException.java
+   │   └── 📂resources
+   │       └── application.properties
+   └── 📂test
+       └── java
+           └── com
+               └── victoria
+                   └── library
+                       ├── LibraryApplicationTests.java
+                       └── 📂service
+                           └── BookServiceTest.java
+
+
 ```
 ### 📌 Orientações
 ---
