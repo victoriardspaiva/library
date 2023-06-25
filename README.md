@@ -1,19 +1,17 @@
-# library
+# Projeto Library
+![Static Badge](https://img.shields.io/badge/Spring%20boot-brightgreen?logo=spring%20boot&label=3.1.0&labelColor=gray&color=green&link=https%3A%2F%2Fspring.io%2Fprojects%2Fspring-boot)
+![Static Badge](https://img.shields.io/badge/Java-black?logo=Java&label=20&labelColor=gray&color=orange&link=https%3A%2F%2Fwww.oracle.com%2Fjava%2Ftechnologies%2Fjavase%2Fjdk20-archive-downloads.html)
+![Static Badge](https://img.shields.io/badge/MySQL-black?logo=MySQL&label=database&labelColor=white&color=blue&link=https%3A%2F%2Fwww.mysql.com%2F)
+![Static Badge](https://img.shields.io/badge/maven-black?logo=Java&label=4.0.0&labelColor=gray&color=orange)
+
+
+
 
 
 http://localhost:8080/swagger-ui/index.html
 
-<p align="center">
-  <a>
-    <a href="https://projeto-caramelo.herokuapp.com/"><img alt="Deploy on Heroku" src="https://img.shields.io/badge/deploy-heroku.com-blueviolet">
-    <a href="https://www.mongodb.com/cloud/atlas"><img alt="Database MongoDB" src="https://img.shields.io/badge/database-mongodb.com-green">
-    <a href="https://nodejs.org/pt-br/"><img alt="Node version" src="https://img.shields.io/badge/node-v12.18.3-blue">
-  </a>
-</p>
 
-<h1 align="center">
-  <img src="assets/logo.png" alt="um gato e uma cachorro abraçados em formato de coração" width="500">
-</h1>
+
 
 > Projeto realizado para por em prática estudo voltado para desenvolvimento backend, usando do ecossistema Spring com o Sring Boot.
 
