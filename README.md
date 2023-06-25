@@ -145,7 +145,8 @@ Para criar a variavel é necessário na collection > aba Variables preencha na c
   
 ### Referencial Teórico
 ---
-- 
+- Fundamentos do Desenho Orientado a Objeto com UML. Meilir Page-Jones
+- Spring Boot, da API REST aos Microservices. Michelli Brito.
 
 
 
