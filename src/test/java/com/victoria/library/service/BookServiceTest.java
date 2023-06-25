@@ -2,7 +2,6 @@ package com.victoria.library.service;
 
 import com.victoria.library.entity.Book;
 import com.victoria.library.entity.GenreEnum;
-import com.victoria.library.exception.BookException;
 import com.victoria.library.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

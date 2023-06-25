@@ -1,4 +1,4 @@
-package com.victoria.library.exception;
+package com.victoria.library.service.exception;
 
 public class ObjectNotFoudException extends RuntimeException{
 

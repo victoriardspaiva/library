@@ -1,7 +1,6 @@
 package com.victoria.library.service;
 
 import com.victoria.library.entity.Book;
-import com.victoria.library.exception.BookException;
 import com.victoria.library.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,11 +28,7 @@ public class BookService {
     }
 
     public Optional<Book> getByID(UUID id){
-        try {
-            return bookRepository.findById(id);
-        } catch (final Exception e){
-            throw new BookException(format("Erro ao buscar livros por id = %s", id), e);
-        }
+        return bookRepository.findById(id);
     }
 
     public void deleteById(UUID id){
