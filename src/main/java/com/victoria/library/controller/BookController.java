@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -62,7 +63,22 @@ public class BookController {
     public Book getByIdBook(@PathVariable("id") UUID id){
         Optional<Book> book = bookService.getByID(id);
         return book.orElseThrow(()-> new ObjectNotFoudException("Livro não encontrado!"));
+    }
 
+    @GetMapping("/search")
+    @Operation(summary = "Pesquisa por titilo da obra.", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Busca realizada com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
+            @ApiResponse(responseCode = "500", description = "Erro ao realizar busca dos dados"),
+    })
+    public ResponseEntity<Page<Book>> searchByTitle(@PageableDefault(
+            size = 2,
+            sort = "id",
+            direction = Sort.Direction.ASC) Pageable pageable,
+                                                    @RequestParam("title") String title) {
+        Page<Book> pageBook = new PageImpl<>(bookService.searchByTitle(title));
+        return ResponseEntity.status(HttpStatus.OK).body(pageBook);
     }
 
     @DeleteMapping("/{id}")

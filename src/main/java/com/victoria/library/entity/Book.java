@@ -52,4 +52,20 @@ public class Book implements Serializable {
 
     @Column(name = "REGISTRATION_DATE")
     private LocalDateTime registrationDate;
+
+
+    public static Book converter(Book b){
+        b = Book.builder()
+                .id(b.getId())
+                .title(b.getTitle())
+                .subTitle(b.getSubTitle())
+                .author(b.getAuthor())
+                .translator(b.getTranslator())
+                .genreEnum(b.getGenreEnum())
+                .pages(b.getPages())
+                .readStatus(b.getReadStatus())
+                .registrationDate(b.getRegistrationDate())
+                .build();
+        return b;
+    }
 }

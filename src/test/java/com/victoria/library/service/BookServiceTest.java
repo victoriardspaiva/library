@@ -78,7 +78,4 @@ public class BookServiceTest {
         bookService.deleteById(book.getId());
         verify(bookRepository, times(1)).deleteById(book.getId());
     }
-
-
-
 }

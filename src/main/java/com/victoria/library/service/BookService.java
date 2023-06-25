@@ -1,14 +1,17 @@
 package com.victoria.library.service;
 
 import com.victoria.library.entity.Book;
+import com.victoria.library.entity.GenreEnum;
 import com.victoria.library.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import static java.lang.String.format;
 import static org.springframework.util.Assert.notNull;
@@ -33,5 +36,12 @@ public class BookService {
 
     public void deleteById(UUID id){
         bookRepository.deleteById(id);
+    }
+
+    public List<Book> searchByTitle(String title) {
+        return bookRepository.findByTitleContains(title)
+                .stream()
+                .map(Book::converter)
+                .collect(Collectors.toList());
     }
 }
