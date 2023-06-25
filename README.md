@@ -5,7 +5,7 @@ http://localhost:8080/swagger-ui/index.html
 
 <p align="center">
   <a>
-    <a href="https://projeto-caramelo.herokuapp.com/"><img alt="Deploy on Heroku" src="https://img.shields.io/badge/deploy-heroku.com-blueviolet">
+    <a href="https://www.oracle.com/java/technologies/javase/jdk20-archive-downloads.html"><img alt="Java 20" src="https://img.shields.io/badge/deploy-heroku.com-blueviolet">
     <a href="https://www.mongodb.com/cloud/atlas"><img alt="Database MongoDB" src="https://img.shields.io/badge/database-mongodb.com-green">
     <a href="https://nodejs.org/pt-br/"><img alt="Node version" src="https://img.shields.io/badge/node-v12.18.3-blue">
   </a>

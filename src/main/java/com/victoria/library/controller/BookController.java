@@ -56,21 +56,21 @@ public class BookController {
     @GetMapping("/{id}")
     @Operation(summary = "List a book by id code.", method = "GET")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Busca realizada com sucesso"),
-            @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
-            @ApiResponse(responseCode = "500", description = "Erro ao realizar busca dos dados"),
+            @ApiResponse(responseCode = "200", description = "Search performed successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid parameters"),
+            @ApiResponse(responseCode = "500", description = "Error when performing data search"),
     })
     public Book getByIdBook(@PathVariable("id") UUID id){
         Optional<Book> book = bookService.getByID(id);
-        return book.orElseThrow(()-> new ObjectNotFoudException("Livro não encontrado!"));
+        return book.orElseThrow(()-> new ObjectNotFoudException("Book not found!"));
     }
 
     @GetMapping("/search")
-    @Operation(summary = "Pesquisa por titilo da obra.", method = "GET")
+    @Operation(summary = "Search by work title.", method = "GET")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Busca realizada com sucesso"),
-            @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
-            @ApiResponse(responseCode = "500", description = "Erro ao realizar busca dos dados"),
+            @ApiResponse(responseCode = "200", description = "Search performed successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid parameters"),
+            @ApiResponse(responseCode = "500", description = "Error when performing data search"),
     })
     public ResponseEntity<Page<Book>> searchByTitle(@PageableDefault(
             size = 2,
@@ -89,7 +89,7 @@ public class BookController {
                 .map(book -> {
                     bookService.deleteById(book.getId());
                     return Void.TYPE;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado!"));
+                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found!"));
     }
 
     @PutMapping("/{id}")
@@ -101,6 +101,6 @@ public class BookController {
                     modelMapper.map(book, bookBase);
                     bookService.save(bookBase);
                     return Void.TYPE;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado!"));
+                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found!"));
     }
 }
