@@ -13,36 +13,34 @@ http://localhost:8080/swagger-ui/index.html
 
 
 
-> Projeto realizado para por em prática estudo voltado para desenvolvimento backend, usando do ecossistema Spring com o Sring Boot.
+
 
 ### 📑 Índice
 ---
 
-- [Problemática](#problemática-)
-- [Solução](#solução-)
-- [Público alvo](#o-público-alvo)
-- [Arquitetura](#-arquitetura)
+- [Problemática](#-problemática)
 - [Tecnologias](#-tecnologias)
+- [Arquitetura](#-arquitetura)
 - [Orientações](#-orientações)
    - [Pré-requisitos](#-pré-requisitos)
    - [Rodando o Back End (servidor)](#-rodando-o-back-end-servidor)
    - [Rotas, links e métodos](#--rotas-links-e-métodos)
-      - [Places](#hosts)
-      - [Usuários](#usuários)
 - [Tratamento de erro](#-orientações)
-- [Implementações futuras](#implementações-futuras)
+- [Objetivos na implementação](#objetivos-na-implementação)
 
 
-### Problemática 
-Para o gerenciamento e catatolagação de sua coleção de livros de sua biblioteca pessoal.
+### ❓ Problemática
+Para o gerenciamento e catatolagação de livros de sua biblioteca pessoal foi realizado projeto de uma API RESTful para por em prática estudo voltado para desenvolvimento backend, usando ecossistema Spring Framework.
 
-### Solução 🐶
-Voltado para animais - gatos e cachororos - em situação de vunerabilidade na região metropolitana do Recife procurando uma lar temporário ou uma adoção responsável.
-Terá uma base de dados de hosts que pode ser abrigos, ONGs ou pessoas que se disponibilizam para abrigar os animais até sua possivel adoção.
+### 💻 Tecnologias
+---
+As seguintes ferramentas foram usadas na construção do projeto:
 
-#### O público alvo: 
-1) pessoas que encontram algum animal abandonado e gostariam entregar à uma local de acolhimento. 🏡
-2) pessoas que buscam por locais que tenham pets disponiveis para adoção. 🐈
+- Sring Boot;
+- Spring Data JPA;
+- Swagger Open API
+
+
 
 ### 🧱 Arquitetura
 ---
@@ -74,114 +72,59 @@ Terá uma base de dados de hosts que pode ser abrigos, ONGs ou pessoas que se di
 ├───README.md
 └───server.js
 ```
-### 💻 Tecnologias
----
-As seguintes ferramentas foram usadas na construção do projeto:
 
-- [JavaScript](https://www.javascript.com/)
-- [Node.js](https://nodejs.org/en/)
-- [Express](https://expressjs.com/pt-br/)
-- [Nodemon](https://nodemon.io/)
-- [Cors](https://www.typescriptlang.org/)
-- [Bcrypt](https://www.npmjs.com/package/bcrypt)
-- [JWT](https://www.npmjs.com/package/jsonwebtoken)
-- [Mongoose](https://www.npmjs.com/package/mongoose)
-- [Dotenv-safe](https://www.npmjs.com/package/dotenv-safe)
 
 ### 📌 Orientações
 ---
 ### 📎 Pré-requisitos:
 
-Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+Antes de começar, você vai precisar ter instalado em sua máquina apenas as seguintes ferramentas:
 * [Git](https://git-scm.com);
-* [Node.js](https://nodejs.org/en/);
-* Para o banco de dados usaremos um não relacional - NoSQL - MongoDB, se você quiser criar seu db na nuvem, deve criar uma conta no [Mongo Atlas](https://account.mongodb.com/), a partir disso é possivel da nuvem mesmo gerencia-lo ou também é possivel atráves do aplicativo desktop [MongoCompass](https://www.mongodb.com/products/compass).
-* Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/).
+* [Docker](https://www.docker.com/);
+* Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://www.jetbrains.com/idea/).
 
 #### 🎲 Rodando o Back End (servidor)
 
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/victoriardspaiva/projetoLivre-Caramelo>
+$ git clone <https://github.com/victoriardspaiva/library>
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd projetoLivre-Caramelo
+$ cd library
 
 # Instale as dependências
-$ npm install ou npm i
+$ sudo docker-compose -f docker-compose.yml up -d
 
-# Execute o servidor
-$ npm start
-
-# O servidor inciará na porta:9090 - acesse <http://localhost:9090> 
+# Levante o servidor, e o Tomcat inciará na porta:8080 - acesse <http://localhost:8080> 
 ```
 ### 🚀  Rotas, links e métodos
 ---
 A ferramenta de suporte de criação das requisição usada foi o [Postman](https://www.postman.com/), você pode usar a de sua preferência.
 
-
 #### Variáveis de ambientes: 
-é possivel criar variáveis que sejam visiveis para todo o escopo do projeto, existem alguns beneficios um dele é não deixar o valor exposto, além de poder ser reutilizado sempre que necessário.
+É possivel criar variáveis que sejam visiveis para todo o escopo do projeto, existem alguns beneficios um dele é não deixar o valor exposto, além de poder ser reutilizado sempre que necessário.
 
 Para criar a variavel é necessário na collection > aba Variables preencha na coluna variable da tabela o nome da variavel `URL` e em initial value e current value colocar o valor `http://localhost:9090`
 
 > Na barra de URL `endpoint`, vamos preencher o nome da variavel entre dois cochetes `{{URL}}`.
 
-## Hosts:
 
-> Voce pode acessar a rota: localmente, sem ou com variavel de ambiente, ou pode acessar também -só as rotas get- consumindo pela aplicação.
-> Obs.: {{URL}}/home/all ou https://projeto-caramelo.herokuapp.com/home/all.
+## Recursos:
 
-| Feature | Método | Rota |
-|---------|--------|------|
-|🏚️ Página inicial/ home | GET |  `{{URL}}/`|
-|🗂️ Listar todas os hosts disponiveis |GET  |  `{{URL}}/all`|
-|🗃️ Listar hosts por filtros | GET  |  `{{URL}}/home/search`|
-
-   - ✔️ name
-   - ✔️ id
-   - ✔️ animal
-   - ✔️ district
-   - ✔️ host
-
-### Rotas privadas:
-
-> Para ter acesso as rotas privadas é necessário primeiramente criar registro de usuário, depois realizar o login, copiar o token de autenticação. Ir na aba de Authorization no Type escolher `Bearer Token` e no campo token colar o código que foi copiado.
-
-| Feature | Método | Rota |
-|---------|--------|------|
-|📋 Criar um cadastro para o host | POST|  `{{URL}}/home/create`|
-|📝 Atualizar dados cadastrais do host | PUT|  `{{URL}}/home/update`|
-|🗑️ Deletar um host |DELETE | `{{URL}}/home/delete`|
-
-## Usuários 
-
-| Feature | Método | Rota |
-|---------|--------|------|
-|🗂️ Listar todos usuários: |GET|  `{{URL}}/user/all`|
-|📂 Listar usuário por id: |GET|  `{{URL}}/user/id?`|
-|📋 Registrar usuários: |POST|  `{{URL}}/register`|
-|✅ Login de usuário: |POST|  `{{URL}}/user/login`|
-|📝 Atualizar dados cadastrais do usuário: |PUT|  `{{URL}}/user/update`|
-|❌ Deletar um usuários: |DELETE|  `{{URL}}/user/delete`|
+![assets/recurso.jpg](assets/recurso.jpg)
 
 ### Tratamento de erro
 - [x] Pesquisa não encontrada
-- [x] Só para gatos e cachorros
-- [x] Retorno vazio
+
+### Objetivos na implementação
+- [x] Nenhuma query nativa
+- [x] Documentação via Swagger
+- [x] Cobertura de testes acima de 80%
+- [x] Retornos usando de paginação
+- [x] Exception Pattern
+- [ ] 
 
 
-### Implementações futuras
-* Exibir número disponivel de vagas;
-* Perfil de usuário:
-   * Quero adotar
-   * Quero resgatar
-   * Quero ser cuidador 
-* Cadastro de animais disponiveis;
-* Notificação de eventos e campanhas de adoção;
-* Veterinários parceiros.
-
-![assets/adocao.jpg](assets/adocao.jpg)
 
 
 
