@@ -4,7 +4,7 @@ import lombok.Getter;
 
 public enum GenreEnum {
     LITERATURA_BRASILEIRA(1, "Literatura Brasileira"),
-    FILOSOFIA(2, "Filosofia Contemponêa"),
+    FILOSOFIA(2, "Filosofia"),
     FEMINISMO(3, "Feminismo");
 
     @Getter
