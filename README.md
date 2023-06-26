@@ -25,11 +25,11 @@
 Para o gerenciamento e catatolagação de livros de sua biblioteca pessoal foi realizado projeto de uma API RESTful para por em prática estudo voltado para desenvolvimento backend, usando ecossistema Spring Framework.
 
 ### 💾 Objetivo Gerais
-Desenvolver uma API segundo o modelo de Maturidade do Richardson que segue 4 niveis afim de conseguir contruir uma API RESTful
-- [x] Nível 0: Utiliza o protocolo HTTP como mecanismo de comunicação;
-- [x] Nível 1: Define bem, de forma única cada recurso e com substantivos cadas recurso;
-- [x] Nível 2: Define bem o protocolo HTTP e o tipos de retornos possiveis da requisição;
-- [x] Nivel 3: Possui HATEOAS que são hipermídias que mostram seu estado atual e seu relacionamento.
+Desenvolver uma API segundo o modelo de Maturidade do Richardson que segue 4 niveis afim de conseguir construir uma API RESTful:
+- [x] Nível 0: Utilizar o protocolo HTTP como mecanismo de comunicação;
+- [x] Nível 1: Definir bem, de forma única cada recurso e com substantivos cadas recurso;
+- [x] Nível 2: Definir bem o protocolo HTTP e o tipos de retornos possiveis da requisição;
+- [x] Nivel 3: Possuir HATEOAS que são hipermídias que mostram seu estado atual e seu relacionamento.
 
 
 ### 💻 Tecnologias
