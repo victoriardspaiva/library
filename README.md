@@ -100,9 +100,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 Antes de começar, você vai precisar ter instalado em sua máquina apenas as seguintes ferramentas:
 * [Git](https://git-scm.com);
 * [Docker](https://www.docker.com/);
-* Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://www.jetbrains.com/idea/).
+* Além disto é bom ter um editor para trabalhar com o código como [Intellij](https://www.jetbrains.com/idea/).
 
-#### 🎲 Rodando o Back End (servidor)
+#### 🎲 Rodando o Back End 
 
 ```bash
 # Clone este repositório
