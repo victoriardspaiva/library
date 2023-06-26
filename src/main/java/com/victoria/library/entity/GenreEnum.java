@@ -31,4 +31,12 @@ public enum GenreEnum {
         }
         throw new IllegalArgumentException(NOT_FOUND_MESSAGE + code);
     }
+    public static GenreEnum getGenreEnumByCode(Integer code) {
+        for (GenreEnum genre : GenreEnum.values()) {
+            if (genre.getCode() == code) {
+                return genre;
+            }
+        }
+        throw new IllegalArgumentException(NOT_FOUND_MESSAGE + code);
+    }
 }

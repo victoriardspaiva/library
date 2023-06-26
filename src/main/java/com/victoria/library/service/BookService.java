@@ -10,11 +10,13 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import static com.victoria.library.entity.GenreEnum.getDescriptionFromCode;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -43,5 +45,9 @@ public class BookService {
 
     public List<Book> searchByTitle(String title) {
         return bookRepository.findByTitleContains(title);
+    }
+
+    public List<Book> searchByGenre(Integer genre) {
+        return bookRepository.findAllByGenreEnum(GenreEnum.getGenreEnumByCode(genre));
     }
 }
