@@ -11,10 +11,15 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,6 +42,9 @@ public class BookServiceTest {
 
     Page<Book> bookPage;
     Pageable pageable;
+    List<Book> bookList;
+
+    private String title = "Livro";
 
     @BeforeEach
     public void setUp(){
@@ -45,6 +53,11 @@ public class BookServiceTest {
                 .title("Livro")
                 .author("Fulano")
                 .genreEnum(Collections.singletonList(GenreEnum.FILOSOFIA))
+                .subTitle("etc")
+                .translator("Siclano")
+                .pages(3L)
+                .readStatus(true)
+                .registrationDate(LocalDateTime.now())
                 .build();
     }
 
@@ -61,15 +74,15 @@ public class BookServiceTest {
     @Test
     void deveSalvarLivrosComSucesso(){
         when(bookRepository.save(book)).thenReturn(book);
-        book = bookService.save(book);
-        assertEquals(book, book);
+        Book bookAtual = bookService.save(book);
+        assertEquals(book, bookAtual);
     }
 
     @Test
     void deveRetornarTodosComSucesso(){
         when(bookRepository.findAll(pageable)).thenReturn(bookPage);
-        bookPage = bookService.getAll(pageable);
-        assertEquals(book, book);
+        Page<Book> bookPageAtual = bookService.getAll(pageable);
+        assertEquals(bookPage, bookPageAtual);
     }
 
     @Test
@@ -79,6 +92,10 @@ public class BookServiceTest {
         verify(bookRepository, times(1)).deleteById(book.getId());
     }
 
-
-
+    @Test
+    void deveRetornarLivroPorTitulo(){
+        when(bookRepository.findByTitleContains(title)).thenReturn((bookList));
+        List<Book> bookListAtual = bookService.searchByTitle(title);
+        assertEquals(bookPage, bookListAtual);
+    }
 }

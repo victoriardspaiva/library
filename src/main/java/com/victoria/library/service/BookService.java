@@ -7,11 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static java.lang.String.format;
-import static org.springframework.util.Assert.notNull;
 
 @Service
 public class BookService {
@@ -33,5 +32,12 @@ public class BookService {
 
     public void deleteById(UUID id){
         bookRepository.deleteById(id);
+    }
+    public List<Book> searchByTitle(String title) {
+        return bookRepository.findByTitleContains(title);
+    }
+
+    public boolean existsByBook(String book){
+        return bookRepository.existsByTitle(book);
     }
 }
