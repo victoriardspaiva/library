@@ -41,7 +41,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - Swagger Open API;
 - MySQL.
 
-### Objetivos na implementação
+### 📌 Objetivos na implementação
 ---
 - [x] Nenhuma query nativa;
 - [x] Documentação via Swagger;
