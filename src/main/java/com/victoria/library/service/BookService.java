@@ -48,6 +48,7 @@ public class BookService {
     }
 
     public List<Book> searchByGenre(Integer genre) {
-        return bookRepository.findAllByGenreEnum(GenreEnum.getGenreEnumByCode(genre));
+        GenreEnum genreEnum = GenreEnum.getGenreEnumByCode(genre);
+        return bookRepository.findBooksByGenreEnum(genreEnum);
     }
 }
