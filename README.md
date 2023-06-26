@@ -142,8 +142,9 @@ Para criar a variavel é necessário na collection > aba Variables preencha na c
 
 ### Evoluções Futuras
 ---
-- Maturidade no Exception Pattern e Stream API
-- Autenticação Spring Boot Security
+- Maturidade no Exception Pattern e Stream API;
+- Cadastrar gêneros;
+- Autenticação Spring Boot Security;
   
 ### Referencial Teórico
 ---
