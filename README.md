@@ -1,4 +1,4 @@
-# Projeto Library
+# Projeto Library 📚
 ![Static Badge](https://img.shields.io/badge/Spring%20boot-brightgreen?logo=spring%20boot&label=3.1.0&labelColor=gray&color=green&link=https%3A%2F%2Fspring.io%2Fprojects%2Fspring-boot)
 ![Static Badge](https://img.shields.io/badge/Java-black?logo=Java&label=20&labelColor=gray&color=orange&link=https%3A%2F%2Fwww.oracle.com%2Fjava%2Ftechnologies%2Fjavase%2Fjdk20-archive-downloads.html)
 ![Static Badge](https://img.shields.io/badge/MySQL-black?logo=MySQL&label=database&labelColor=white&color=blue&link=https%3A%2F%2Fwww.mysql.com%2F)
