@@ -1,0 +1,40 @@
+{
+    "title": "Crepúsculo dos Ídolos",
+    "subTitle": "ou Como se filosofa com o martelo2",
+    "author": "Friedrich Nietzsche",
+    "translator": "Paulo César de Souza",
+    "genreEnum": [
+        1
+    ],
+    "pages": 136
+},
+{
+    "title": "O que é a filosofia?",
+    "subTitle": "",
+    "author": "Gilles Deleuze",
+    "translator": "Bento Prado Jr.",
+    "genreEnum": [
+        1
+    ],
+    "pages": 272
+},
+{
+    "title": "Orientação a Objetos e SOLID para Ninjas",
+    "subTitle": "Projetando classes flexiveis",
+    "author": "Maurícuo Aniche",
+    "translator": "",
+    "genreEnum": [
+        1
+    ],
+    "pages": 156
+},
+{
+    "title": "Código Limpo",
+    "subTitle": "Habilidades Práticas do Agile Software",
+    "author": "Robert C. Martin",
+    "translator": "Leandro Chu",
+    "genreEnum": [
+        1
+    ],
+    "pages": 422
+}
