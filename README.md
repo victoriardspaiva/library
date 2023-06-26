@@ -15,7 +15,7 @@
 - [Orientações](#-orientações)
    - [Pré-requisitos](#-pré-requisitos)
    - [Rodando o Back End (servidor)](#-rodando-o-back-end-servidor)
-   - [Rotas, links e métodos](#--rotas-links-e-métodos)
+   - [Rotas, links e métodos](#-rotas-links-e-métodos)
 - [Tratamento de erro](#-orientações)
 - [Evoluções Futuras](#evoluções-futuras)
 - [Referencial Teórico](#referencial-teórico)
@@ -137,7 +137,8 @@ Para criar a variavel é necessário na collection > aba Variables preencha na c
 
 ### Tratamento de erro
 ---
-- [x] Pesquisa não encontrada
+- [x] Pesquisa por livro não encontrada
+- [x] Livro já cadastrado 
 
 ### Evoluções Futuras
 ---
