@@ -15,6 +15,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -93,9 +94,8 @@ public class BookServiceTest {
 
     @Test
     void deveRetornarLivroPorTitulo(){
-        when(bookRepository.findByTitleContains(title)).thenReturn((bookPage));
-        Page<Book> bookPageAtual= bookService.searchByTitle(book.getTitle());
-
-        assertEquals(bookPage, bookPageAtual);
+        when(bookRepository.findByTitleContains(title)).thenReturn((bookList));
+        List<Book> bookListAtual = bookService.searchByTitle(title);
+        assertEquals(bookPage, bookListAtual);
     }
 }

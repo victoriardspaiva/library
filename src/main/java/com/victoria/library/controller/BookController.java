@@ -10,9 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +19,13 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping(value = "/library", produces = {"application/json"})
@@ -49,7 +52,14 @@ public class BookController {
             size = 2,
             sort = "id",
             direction = Sort.Direction.ASC) Pageable pageable){
-        return ResponseEntity.status(HttpStatus.OK).body(bookService.getAll(pageable));
+        Page<Book> bookPage = bookService.getAll(pageable);
+        if(!bookPage.isEmpty()){
+            for(Book book: bookPage){
+                UUID id = book.getId();
+                book.add(linkTo(methodOn(BookController.class).getByIdBook(id)).withSelfRel());
+            }
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(bookPage);
     }
 
     @GetMapping("/{id}")
@@ -61,6 +71,8 @@ public class BookController {
     })
     public Book getByIdBook(@PathVariable("id") UUID id){
         Optional<Book> book = bookService.getByID(id);
+        Pageable pageable = PageRequest.of(0, 10);
+        book.get().add(linkTo(methodOn(BookController.class).getAllBook(pageable)).withRel("Book list"));
         return book.orElseThrow(()-> new ObjectNotFoudException("Book not found!"));
     }
 
@@ -76,8 +88,21 @@ public class BookController {
             sort = "id",
             direction = Sort.Direction.ASC) Pageable pageable,
                                                     @RequestParam("title") String title) {
-        Page<Book> pageBook = bookService.searchByTitle(title);
-        return ResponseEntity.status(HttpStatus.OK).body(pageBook);
+        List<Book> bookList = bookService.searchByTitle(title)
+                .stream()
+                .map(Book::converter)
+                .collect(Collectors.toList());
+
+        Page<Book> bookPage = new PageImpl<>(bookList);
+
+        if(!bookPage.isEmpty()){
+            for(Book book: bookPage){
+                UUID id = book.getId();
+                book.add(linkTo(methodOn(BookController.class).getByIdBook(id)).withSelfRel());
+            }
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(bookPage);
     }
 
     @DeleteMapping("/{id}")

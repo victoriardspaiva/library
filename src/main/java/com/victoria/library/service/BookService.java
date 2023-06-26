@@ -1,5 +1,6 @@
 package com.victoria.library.service;
 
+import com.victoria.library.controller.BookController;
 import com.victoria.library.entity.Book;
 import com.victoria.library.entity.GenreEnum;
 import com.victoria.library.repository.BookRepository;
@@ -14,8 +15,9 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static java.lang.String.format;
-import static org.springframework.util.Assert.notNull;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 
 @Service
 public class BookService {
@@ -39,10 +41,7 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public Page<Book> searchByTitle(String title) {
-        return new PageImpl<>(bookRepository.findByTitleContains(title)
-                .stream()
-                .map(Book::converter)
-                .collect(Collectors.toList()));
+    public List<Book> searchByTitle(String title) {
+        return bookRepository.findByTitleContains(title);
     }
 }
