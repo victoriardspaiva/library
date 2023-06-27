@@ -134,7 +134,7 @@ Para criar a variavel é necessário na collection > aba Variables preencha na c
 É possivel conferir a documentação no link abaixo:
 [Swagger](http://localhost:8080/swagger-ui/index.html)
 
-![assets/recurso.png](assets/recurso.png)
+![assets/recursos.png](assets/recursos.png)
 
 ### Tratamento de erro
 ---
