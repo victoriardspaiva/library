@@ -1,7 +1,6 @@
 package com.victoria.library.controller;
 
 import com.victoria.library.entity.Genre;
-import com.victoria.library.exception.ObjectNotFoudException;
 import com.victoria.library.service.GenreService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

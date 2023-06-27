@@ -63,9 +63,7 @@ public class BookServiceTest {
     @Test
     void deveBuscarLivrosPorIdComSucesso(){
         when(bookRepository.findById(book.getId())).thenReturn(Optional.of(book));
-
         Optional<Book> books = bookService.getByID(book.getId());
-
         assertEquals(Optional.of(book), books);
         verifyNoMoreInteractions(bookRepository);
     }
