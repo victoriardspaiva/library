@@ -44,7 +44,7 @@ public class BookController {
     @Operation(summary = "Create a book record.", method = "POST")
     public ResponseEntity<Object> save(@RequestBody @Valid Book book){
         if(bookService.existsByBook(book.getTitle()))
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Book already exists");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Book already exists");
         Optional<Genre> genre = bookService.getGenre(book.getGenreId());
         book.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         book.setGenre(genre.get());
