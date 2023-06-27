@@ -25,13 +25,4 @@ public class Genre implements Serializable {
 
     @Column(name = "DESCRICAO")
     private String description;
-
-//    @OneToMany
-//    private List<Book> book;
-
-//    Genre(Long code, String description){
-//        this.code = code;
-//        this.description = description;
-//    }
-
 }

@@ -30,17 +30,19 @@ public class BookServiceTest {
 
     @InjectMocks
     BookService bookService;
+    @Mock
+    GenreService genreService;
 
     @Mock
     BookRepository bookRepository;
 
     Book book;
     Page<Book> bookPage;
-
     Pageable pageable;
     List<Book> bookList;
-
     private String title = "Livro";
+    private Optional<Genre> genre;
+    Long code = 1L;
 
     @BeforeEach
     public void setUp(){
@@ -49,6 +51,7 @@ public class BookServiceTest {
                 .title("Livro")
                 .author("Fulano")
                 .genre(new Genre())
+                .genreId(1L)
                 .subTitle("etc")
                 .translator("Siclano")
                 .pages(3L)
@@ -93,5 +96,26 @@ public class BookServiceTest {
         when(bookRepository.findByTitleContains(title)).thenReturn((bookList));
         List<Book> bookListAtual = bookService.searchByTitle(title);
         assertEquals(bookPage, bookListAtual);
+    }
+
+    @Test
+    void deveRetornarPararametroGenero(){
+        when(genreService.findGenreByCode(code)).thenReturn(genre);
+        Optional<Genre> genreAtual = bookService.getGenre(code);
+        assertEquals(genre, genreAtual);
+    }
+
+    @Test
+    void validaExistsByBook(){
+        when(bookRepository.existsByTitle(title)).thenReturn(true);
+        boolean validaExistsByBookAtual = bookService.existsByBook(title);
+        assertEquals(true, validaExistsByBookAtual);
+    }
+
+    @Test
+    void deveRetornaLivroPorGenero(){
+        when(bookRepository.findByGenreId(code)).thenReturn(bookList);
+        List<Book> bookListAtual = bookService.searchByGenre(code);
+        assertEquals(bookList, bookListAtual);
     }
 }
