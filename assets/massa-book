@@ -3,9 +3,7 @@
     "subTitle": "ou Como se filosofa com o martelo2",
     "author": "Friedrich Nietzsche",
     "translator": "Paulo César de Souza",
-    "genreEnum": [
-        1
-    ],
+    "genreEnum": 1,
     "pages": 136
 },
 {
@@ -13,9 +11,7 @@
     "subTitle": "",
     "author": "Gilles Deleuze",
     "translator": "Bento Prado Jr.",
-    "genreEnum": [
-        1
-    ],
+    "genre": 1,
     "pages": 272
 },
 {
@@ -23,9 +19,7 @@
     "subTitle": "Projetando classes flexiveis",
     "author": "Maurícuo Aniche",
     "translator": "",
-    "genreEnum": [
-        1
-    ],
+    "genre": 2,
     "pages": 156
 },
 {
@@ -33,8 +27,6 @@
     "subTitle": "Habilidades Práticas do Agile Software",
     "author": "Robert C. Martin",
     "translator": "Leandro Chu",
-    "genreEnum": [
-        1
-    ],
+    "genreEnum": 2,
     "pages": 422
 }
