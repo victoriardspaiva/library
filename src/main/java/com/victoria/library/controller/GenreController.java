@@ -1,12 +1,27 @@
 package com.victoria.library.controller;
 
 import com.victoria.library.entity.Genre;
+import com.victoria.library.exception.ObjectNotFoudException;
 import com.victoria.library.service.GenreService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Optional;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping(value = "/genre", produces = {"application/json"})
@@ -19,7 +34,38 @@ public class GenreController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create a genre record.", method = "POST")
-    public Genre save(@RequestBody Genre genre){
+    public Genre save(@RequestBody Genre genre) {
         return genreService.save(genre);
+    }
+
+    @GetMapping
+    @Operation(summary = "List of all registered genres.", method = "GET")
+    public ResponseEntity<Page<Genre>> getAllGenre(@PageableDefault
+                                                           (size = 10,
+                                                                   sort = "code",
+                                                                   direction = Sort.Direction.DESC) Pageable pageable){
+        Page<Genre> genresPage = genreService.getAllGenre(pageable);
+        if (!genresPage.isEmpty()){
+            for(Genre genre: genresPage){
+                Long code = genre.getCode();
+                genre.add(linkTo(methodOn(GenreController.class).getByCode(code)).withSelfRel());
+            }
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(genresPage);
+    }
+
+    @GetMapping("/{code}")
+    @Operation(summary = "Search genre by code.", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Search performed successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid parameters"),
+            @ApiResponse(responseCode = "500", description = "Error when performing data search"),
+            @ApiResponse(responseCode = "404")
+    })
+    public Genre getByCode(@PathVariable("code") Long code){
+        Optional<Genre> genre = genreService.getById(code);
+        Pageable pageable = PageRequest.of(0,10);
+        genre.get().add(linkTo(methodOn(GenreController.class).getAllGenre(pageable)).withRel("Genre List"));
+        return genre.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Genre not found!"));
     }
 }

@@ -41,6 +41,7 @@ public class BookService {
     public List<Book> searchByTitle(String title) {
         return bookRepository.findByTitleContains(title);
     }
+
     public boolean existsByBook(String book){
         return bookRepository.existsByTitle(book);
     }
