@@ -13,5 +13,5 @@ import java.util.UUID;
 public interface BookRepository extends JpaRepository<Book, UUID> {
 
     List<Book> findByTitleContains(String title);
-    List<Book> findBooksByGenreEnum(GenreEnum genre);
+    List<Book> findByGenreId(Long genreId);
 }

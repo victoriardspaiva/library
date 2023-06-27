@@ -1,6 +1,7 @@
 package com.victoria.library.service;
 
 import com.victoria.library.entity.Book;
+import com.victoria.library.entity.Genre;
 import com.victoria.library.entity.GenreEnum;
 import com.victoria.library.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -52,7 +53,7 @@ public class BookServiceTest {
         book = Book.builder()
                 .title("Livro")
                 .author("Fulano")
-                .genreEnum(Collections.singletonList(GenreEnum.FILOSOFIA))
+                .genre(new Genre())
                 .subTitle("etc")
                 .translator("Siclano")
                 .pages(3L)

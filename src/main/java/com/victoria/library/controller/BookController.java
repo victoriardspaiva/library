@@ -1,6 +1,7 @@
 package com.victoria.library.controller;
 
 import com.victoria.library.entity.Book;
+import com.victoria.library.entity.Genre;
 import com.victoria.library.entity.GenreEnum;
 import com.victoria.library.exception.ObjectNotFoudException;
 import com.victoria.library.service.BookService;
@@ -43,7 +44,9 @@ public class BookController {
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create a book record.", method = "POST")
     public Book save(@RequestBody @Valid Book book){
+        Optional<Genre> genre = bookService.getGenre(book.getGenreId());
         book.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        book.setGenre(genre.get());
         return bookService.save(book);
     }
 
@@ -116,8 +119,8 @@ public class BookController {
     public ResponseEntity<Page<Book>> findByGenre(@PageableDefault(
             size = 2,
             sort = "id",
-            direction = Sort.Direction.ASC) Pageable pageable, @RequestParam("genre")Integer genre){
-        List<Book> bookList = bookService.searchByGenre(genre)
+            direction = Sort.Direction.ASC) Pageable pageable, @RequestParam("genreId")Long genreId){
+        List<Book> bookList = bookService.searchByGenre(genreId)
                 .stream()
                 .map(Book::converter)
                 .collect(Collectors.toList());

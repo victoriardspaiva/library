@@ -2,6 +2,7 @@ package com.victoria.library.service;
 
 import com.victoria.library.controller.BookController;
 import com.victoria.library.entity.Book;
+import com.victoria.library.entity.Genre;
 import com.victoria.library.entity.GenreEnum;
 import com.victoria.library.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    private GenreService genreService;
+
     public Book save(Book book){
         return bookRepository.save(book);
     }
@@ -47,8 +51,11 @@ public class BookService {
         return bookRepository.findByTitleContains(title);
     }
 
-    public List<Book> searchByGenre(Integer genre) {
-        GenreEnum genreEnum = GenreEnum.getGenreEnumByCode(genre);
-        return bookRepository.findBooksByGenreEnum(genreEnum);
+    public Optional<Genre> getGenre(Long code) {
+        return genreService.findGenreByCode(code);
+    }
+
+    public List<Book> searchByGenre(Long genreId) {
+        return bookRepository.findByGenreId(genreId);
     }
 }
