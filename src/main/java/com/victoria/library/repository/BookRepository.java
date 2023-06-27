@@ -12,4 +12,5 @@ public interface BookRepository extends JpaRepository<Book, UUID> {
 
     List<Book> findByTitleContains(String title);
     List<Book> findByGenreId(Long genreId);
+    boolean existsByTitle(String book);
 }

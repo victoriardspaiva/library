@@ -42,11 +42,13 @@ public class BookController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create a book record.", method = "POST")
-    public Book save(@RequestBody @Valid Book book){
+    public ResponseEntity<Object> save(@RequestBody @Valid Book book){
+        if(bookService.existsByBook(book.getTitle()))
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Book already exists");
         Optional<Genre> genre = bookService.getGenre(book.getGenreId());
         book.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         book.setGenre(genre.get());
-        return bookService.save(book);
+        return ResponseEntity.status(HttpStatus.OK).body(bookService.save(book));
     }
 
     @GetMapping
