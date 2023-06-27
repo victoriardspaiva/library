@@ -2,6 +2,7 @@ package com.victoria.library.controller;
 
 import com.victoria.library.entity.Genre;
 import com.victoria.library.service.GenreService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ public class GenreController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Create a genre record.", method = "POST")
     public Genre save(@RequestBody Genre genre){
         return genreService.save(genre);
     }
