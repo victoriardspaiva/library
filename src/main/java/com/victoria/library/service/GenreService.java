@@ -32,6 +32,6 @@ public class GenreService {
     }
 
     public boolean existsByGenre(String description) {
-        return genreRepository.existsByGenre(description);
+        return genreRepository.existsByDescription(description);
     }
 }

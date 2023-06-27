@@ -73,7 +73,7 @@ public class GenreServiceTest {
 
     @Test
     void ValidaExistsByGenre(){
-        when(genreRepository.existsByGenre(genre.getDescription())).thenReturn(true);
+        when(genreRepository.existsByDescription(genre.getDescription())).thenReturn(true);
         boolean existsByGenreAtual = genreService.existsByGenre(genre.getDescription());
         assertEquals(true, existsByGenreAtual);
     }
