@@ -33,8 +33,10 @@ public class GenreController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create a genre record.", method = "POST")
-    public Genre save(@RequestBody Genre genre) {
-        return genreService.save(genre);
+    public ResponseEntity<Object> save(@RequestBody Genre genre) {
+        if(genreService.existsByGenre(genre.getDescription()))
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Genre already exists");
+        return ResponseEntity.status(HttpStatus.OK).body(genreService.save(genre));
     }
 
     @GetMapping
@@ -55,12 +57,6 @@ public class GenreController {
 
     @GetMapping("/{code}")
     @Operation(summary = "Search genre by code.", method = "GET")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Search performed successfully"),
-            @ApiResponse(responseCode = "400", description = "Invalid parameters"),
-            @ApiResponse(responseCode = "500", description = "Error when performing data search"),
-            @ApiResponse(responseCode = "404")
-    })
     public Genre getByCode(@PathVariable("code") Long code){
         Optional<Genre> genre = genreService.getById(code);
         Pageable pageable = PageRequest.of(0,10);

@@ -70,4 +70,11 @@ public class GenreServiceTest {
         assertEquals(genreOptional, genreAtual);
         verifyNoMoreInteractions(genreRepository);
     }
+
+    @Test
+    void ValidaExistsByGenre(){
+        when(genreRepository.existsByGenre(genre.getDescription())).thenReturn(true);
+        boolean existsByGenreAtual = genreService.existsByGenre(genre.getDescription());
+        assertEquals(true, existsByGenreAtual);
+    }
 }

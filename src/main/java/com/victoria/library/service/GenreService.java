@@ -30,4 +30,8 @@ public class GenreService {
     public Optional<Genre> getById(Long code) {
         return genreRepository.findById(code);
     }
+
+    public boolean existsByGenre(String description) {
+        return genreRepository.existsByGenre(description);
+    }
 }
