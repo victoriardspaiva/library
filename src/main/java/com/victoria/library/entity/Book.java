@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -19,7 +20,7 @@ import java.util.UUID;
 @Builder
 @Entity
 @Table(name = "TB_BOOKS")
-public class Book implements Serializable {
+public class Book extends RepresentationModel<Book> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -52,4 +53,20 @@ public class Book implements Serializable {
 
     @Column(name = "REGISTRATION_DATE")
     private LocalDateTime registrationDate;
+
+
+    public static Book converter(Book b){
+        b = Book.builder()
+                .id(b.getId())
+                .title(b.getTitle())
+                .subTitle(b.getSubTitle())
+                .author(b.getAuthor())
+                .translator(b.getTranslator())
+                .genreEnum(b.getGenreEnum())
+                .pages(b.getPages())
+                .readStatus(b.getReadStatus())
+                .registrationDate(b.getRegistrationDate())
+                .build();
+        return b;
+    }
 }
