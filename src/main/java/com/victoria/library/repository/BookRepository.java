@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, UUID> {
+
     List<Book> findByTitleContains(String title);
-    boolean existsByTitle(String book);
+    List<Book> findByGenreId(Long genreId);
 }

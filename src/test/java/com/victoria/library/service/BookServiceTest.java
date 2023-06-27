@@ -1,7 +1,7 @@
 package com.victoria.library.service;
 
 import com.victoria.library.entity.Book;
-import com.victoria.library.entity.GenreEnum;
+import com.victoria.library.entity.Genre;
 import com.victoria.library.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,15 +11,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,8 +35,8 @@ public class BookServiceTest {
     BookRepository bookRepository;
 
     Book book;
-
     Page<Book> bookPage;
+
     Pageable pageable;
     List<Book> bookList;
 
@@ -52,7 +48,7 @@ public class BookServiceTest {
         book = Book.builder()
                 .title("Livro")
                 .author("Fulano")
-                .genreEnum(Collections.singletonList(GenreEnum.FILOSOFIA))
+                .genre(new Genre())
                 .subTitle("etc")
                 .translator("Siclano")
                 .pages(3L)

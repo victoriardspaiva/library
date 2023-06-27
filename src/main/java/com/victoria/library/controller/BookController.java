@@ -1,6 +1,7 @@
 package com.victoria.library.controller;
 
 import com.victoria.library.entity.Book;
+import com.victoria.library.entity.Genre;
 import com.victoria.library.exception.ObjectNotFoudException;
 import com.victoria.library.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -41,11 +42,11 @@ public class BookController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create a book record.", method = "POST")
-    public ResponseEntity<Object> save(@RequestBody @Valid Book book){
-        if(bookService.existsByBook(book.getTitle()))
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Book already exists");
+    public Book save(@RequestBody @Valid Book book){
+        Optional<Genre> genre = bookService.getGenre(book.getGenreId());
         book.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
-        return ResponseEntity.status(HttpStatus.OK).body(bookService.save(book));
+        book.setGenre(genre.get());
+        return bookService.save(book);
     }
 
     @GetMapping
@@ -106,6 +107,34 @@ public class BookController {
 
         return ResponseEntity.status(HttpStatus.OK).body(bookPage);
     }
+
+    @GetMapping("/genre")
+    @Operation(summary = "Search by book genre.", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Search performed successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid parameters"),
+            @ApiResponse(responseCode = "500", description = "Error when performing data search"),
+    })
+    public ResponseEntity<Page<Book>> findByGenre(@PageableDefault(
+            size = 2,
+            sort = "id",
+            direction = Sort.Direction.ASC) Pageable pageable, @RequestParam("genreId")Long genreId){
+        List<Book> bookList = bookService.searchByGenre(genreId)
+                .stream()
+                .map(Book::converter)
+                .collect(Collectors.toList());
+
+        Page<Book> bookPage = new PageImpl<>(bookList);
+
+        if(!bookPage.isEmpty()){
+            for(Book book: bookPage){
+                UUID id = book.getId();
+                book.add(linkTo(methodOn(BookController.class).getByIdBook(id)).withSelfRel());
+            }
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(bookPage);
+    }
+
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete a book by id code.", method = "DELETE")

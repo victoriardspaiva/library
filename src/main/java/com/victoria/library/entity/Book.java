@@ -41,10 +41,6 @@ public class Book extends RepresentationModel<Book> implements Serializable {
     @Column(name = "TRANSLATOR")
     private String translator;
 
-    @NotEmpty
-    @Column(name = "GENRE")
-    private List<GenreEnum> genreEnum;
-
     @Column(name = "PAGES")
     private Long pages;
 
@@ -54,6 +50,13 @@ public class Book extends RepresentationModel<Book> implements Serializable {
     @Column(name = "REGISTRATION_DATE")
     private LocalDateTime registrationDate;
 
+    @ManyToOne
+    @JoinColumn(name = "GENRE", referencedColumnName = "CODIGO")
+    private Genre genre;
+
+    @Column(name = "GENRE_ID")
+    private Long genreId;
+
 
     public static Book converter(Book b){
         b = Book.builder()
@@ -62,11 +65,13 @@ public class Book extends RepresentationModel<Book> implements Serializable {
                 .subTitle(b.getSubTitle())
                 .author(b.getAuthor())
                 .translator(b.getTranslator())
-                .genreEnum(b.getGenreEnum())
+                .genre(b.getGenre())
+                .genreId(b.getGenreId())
                 .pages(b.getPages())
                 .readStatus(b.getReadStatus())
                 .registrationDate(b.getRegistrationDate())
                 .build();
         return b;
     }
+
 }
