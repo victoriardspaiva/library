@@ -139,14 +139,18 @@ Para criar a variavel é necessário na collection > aba Variables preencha na c
 ---
 - [x] Pesquisa por livro não encontrada;
 - [x] Livro já cadastrado;
-- [ ] Gênero não encontrado
+- [x] Gênero não encontrado;
+- [x] Gênero já cadastrado. 
 
 ### Evoluções Futuras
 ---
-- [] Maturidade no Exception Pattern e Stream API;
+- [] Maturidade no Exception e Stream API;
 - [x] Cadastrar gêneros;
 - [] Autenticação Spring Boot Security;
-- [] Complexidade em relacionamento de tabelas.
+- [] Complexidade em relacionamento de tabelas;
+- [] Incluir Specification Pattern;
+- [] Microservice de mensageria;
+- [] Ampliar os tipos de tratamento de erros.
   
 ### Referencial Teórico
 ---
