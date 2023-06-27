@@ -146,7 +146,6 @@ Para criar a variavel é necessário na collection > aba Variables preencha na c
 ### Evoluções Futuras
 ---
 - [ ] Maturidade no Exception e Stream API;
-- [x] Cadastrar gêneros;
 - [ ] Autenticação Spring Boot Security;
 - [ ] Complexidade em relacionamento de tabelas;
 - [ ] Incluir Specification Pattern;
