@@ -119,7 +119,7 @@ $ sudo docker-compose -f docker-compose.yml up -d
 ### 🚀  Rotas, links e métodos
 ---
 A ferramenta de suporte de criação das requisição usada foi o [Postman](https://www.postman.com/), você pode usar a de sua preferência.
-É também possivel baixar a collection usada aqui ![assets/Library.postman_collection.json](assets/Library.postman_collection.json)
+É também possivel baixar a collection usada [aqui](assets/Library.postman_collection.json). 
 
 #### Variáveis de ambientes: 
 ---
@@ -134,7 +134,7 @@ Para criar a variavel é necessário na collection > aba Variables preencha na c
 É possivel conferir a documentação no link abaixo:
 [Swagger](http://localhost:8080/swagger-ui/index.html)
 
-![assets/recurso.pgn](assets/recurso.png)
+![assets/recurso.png](assets/recurso.png)
 
 ### Tratamento de erro
 ---
