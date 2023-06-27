@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "8e265b5e-cb43-4fd4-a167-b1dc2f51dc07",
+		"name": "Library",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17945804",
+		"_collection_link": "https://speeding-desert-194738.postman.co/workspace/My-Workspace~4cea5466-f367-48b3-8a35-a118bf6d665a/collection/17945804-8e265b5e-cb43-4fd4-a167-b1dc2f51dc07?action=share&creator=17945804&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "Get all books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/library?page=0&size=10&sort=registrationDate,DESC",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"library"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "registrationDate,DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/library/8bd6ca7c-3e2a-470a-a216-be91e98d22dl",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"library",
+								"8bd6ca7c-3e2a-470a-a216-be91e98d22dl"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search by Title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/library/search?title=cre&page=0&size=2&sort=registrationDate,DESC",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"library",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "cre"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "2"
+								},
+								{
+									"key": "sort",
+									"value": "registrationDate,DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search by Genre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/library/genre?genreId=1&page=0&size=2&sort=registrationDate,DESC",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"library",
+								"genre"
+							],
+							"query": [
+								{
+									"key": "genreId",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "2"
+								},
+								{
+									"key": "sort",
+									"value": "registrationDate,DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Crepusculo dos Idolos312\",\n    \"subTitle\": \"ou Como se filosofa com o martelo\",\n    \"author\": \"Niet\",\n    \"translator\": \"Paulo César de Souza\",\n    \"genreId\": 1,\n    \"pages\": 139\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/library",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"library"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update book",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Crepúsculos dos ídolosB\",\n    \"subTitle\": \"ou Como se filosofa com o martelo\",\n    \"author\": \"Friderich Nietzcshe\",\n    \"translator\": \"Paulo César de Souza\",\n    \"genre\": 1,\n    \"pages\": 136\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/library/8bd6ca7c-3e2a-470a-a216-be91e98d22dd",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"library",
+								"8bd6ca7c-3e2a-470a-a216-be91e98d22dd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"readStatus\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/library/e9250766-e443-46dd-b22c-335c2385065f",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"library",
+								"e9250766-e443-46dd-b22c-335c2385065f"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "false",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/library/3045c2de-22a7-4e57-b0d6-0e503e6b78cc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"library",
+								"3045c2de-22a7-4e57-b0d6-0e503e6b78cc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genre",
+			"item": [
+				{
+					"name": "Create genre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": 2,\n    \"description\": \"Desenvolvimento\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/genre",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"genre"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all genre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/genre",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"genre"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Genre by Code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/genre/10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"genre",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
