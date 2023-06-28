@@ -131,10 +131,10 @@ Para criar a variavel é necessário na collection > aba Variables preencha na c
 
 ### Recursos:
 ---
-É possivel conferir a documentação no link abaixo:
+É possivel conferir a documentação no link:
 [Swagger](http://localhost:8080/swagger-ui/index.html)
 
-![assets/recurso.png](assets/recurso.png)
+![assets/recursos.png](assets/recursos.png)
 
 ### Tratamento de erro
 ---
@@ -146,7 +146,6 @@ Para criar a variavel é necessário na collection > aba Variables preencha na c
 ### Evoluções Futuras
 ---
 - [ ] Maturidade no Exception e Stream API;
-- [x] Cadastrar gêneros;
 - [ ] Autenticação Spring Boot Security;
 - [ ] Complexidade em relacionamento de tabelas;
 - [ ] Incluir Specification Pattern;
