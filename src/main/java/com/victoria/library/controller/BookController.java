@@ -4,6 +4,8 @@ import com.victoria.library.entity.Book;
 import com.victoria.library.entity.Genre;
 import com.victoria.library.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
@@ -66,6 +68,11 @@ public class BookController {
 
     @GetMapping("/{id}")
     @Operation(summary = "List a book by id code.", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Search performed successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid parameters"),
+            @ApiResponse(responseCode = "500", description = "Error when performing data search"),
+    })
     public Book getByIdBook(@PathVariable("id") UUID id){
         Optional<Book> book = bookService.getByID(id);
         Pageable pageable = PageRequest.of(0, 10);
@@ -75,6 +82,11 @@ public class BookController {
 
     @GetMapping("/search")
     @Operation(summary = "Search by work title.", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Search performed successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid parameters"),
+            @ApiResponse(responseCode = "500", description = "Error when performing data search"),
+    })
     public ResponseEntity<Page<Book>> searchByTitle(@PageableDefault(
             size = 2,
             sort = "id",
