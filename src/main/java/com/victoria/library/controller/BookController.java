@@ -80,8 +80,8 @@ public class BookController {
         return book.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found!"));
     }
 
-    @GetMapping("/search")
-    @Operation(summary = "Search by work title.", method = "GET")
+    @GetMapping("/title")
+    @Operation(summary = "Search book by title.", method = "GET")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Search performed successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid parameters"),
@@ -110,7 +110,7 @@ public class BookController {
     }
 
     @GetMapping("/genre")
-    @Operation(summary = "Search by book genre.", method = "GET")
+    @Operation(summary = "Search book by genre.", method = "GET")
     public ResponseEntity<Page<Book>> findByGenre(@PageableDefault(
             size = 2,
             sort = "id",

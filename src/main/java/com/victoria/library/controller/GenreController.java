@@ -22,7 +22,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping(value = "/genre", produces = {"application/json"})
-@Tag(name = "Genres")
+@Tag(name = "List of genres")
 public class GenreController {
 
     @Autowired
