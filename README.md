@@ -17,7 +17,7 @@
    - [Rodando o Back End (servidor)](#-rodando-o-back-end-servidor)
    - [Rotas, links e métodos](#-rotas-links-e-métodos)
 - [Tratamento de erro](#-orientações)
-- [Evoluções Futuras](#evoluções-futuras)
+- [Planejamento para próximas etapas](#planejamento-para-próximas-etapas)
 - [Referencial Teórico](#referencial-teórico)
 
 
