@@ -10,7 +10,7 @@
 - [Problemática](#-problemática)
 - [Objetivos Gerais](#objetivos-gerais)
 - [Tecnologias](#-tecnologias)
-- [Objetivos na implementação](#objetivos-na-implementação)
+- [Objetivos na implementação](#-objetivos-na-implementação)
 - [Arquitetura de diretório](#-arquitetura)
 - [Orientações](#-orientações)
    - [Pré-requisitos](#-pré-requisitos)
