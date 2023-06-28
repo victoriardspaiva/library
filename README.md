@@ -121,7 +121,7 @@ $ sudo docker-compose -f docker-compose.yml up -d
 A ferramenta de suporte de criação das requisição usada foi o [Postman](https://www.postman.com/), você pode usar a de sua preferência.
 É também possivel ter acesso a collection usada [aqui](assets/Library.postman_collection.json). 
 
-#### Variáveis de ambientes: 
+#### 🌐 Variáveis de ambientes: 
 ---
 É possivel criar variáveis que sejam visiveis para todo o escopo do projeto, existem alguns beneficios um dele é não deixar o valor exposto, além de poder ser reutilizado sempre que necessário.
 
@@ -129,30 +129,31 @@ Para criar a variavel é necessário na collection > aba Variables preencha na c
 
 > Na barra de URL `endpoint`, vamos preencher o nome da variavel entre dois cochetes `{{URL}}`.
 
-### Recursos:
+### 🏁  Recursos:
 ---
 É possivel conferir a documentação no link:
 [Swagger](http://localhost:8080/swagger-ui/index.html)
 
 ![assets/recursos.png](assets/recursos.png)
 
-### Tratamento de erro
+### 🚧 Tratamento de erro
 ---
 - [x] Pesquisa por livro não encontrada;
 - [x] Livro já cadastrado;
 - [x] Gênero não encontrado;
 - [x] Gênero já cadastrado. 
 
-### Evoluções Futuras
+### 🚀 Planejamento para próximas etapas
 ---
-- [ ] Maturidade no Exception e Stream API;
-- [ ] Autenticação Spring Boot Security;
-- [ ] Complexidade em relacionamento de tabelas;
-- [ ] Incluir Specification Pattern;
-- [ ] Microservice de mensageria;
-- [ ] Ampliar os tipos de tratamento de erros.
+- [ ] Ampliar os tipos de tratamento de erros com Exceptions;
+- [ ] Maturidade no Stream API;
+- [ ] Buscar complexidade em relacionamento de tabelas;
+- [ ] Incluir camada de autenticação Spring Boot Security;
+- [ ] Implementar microservice de mensageria com Spring Mail, para aviso de emprestimo e devolução de livros;
+- [ ] Incluir Specification Pattern.
+
   
-### Referencial Teórico
+### 📃 Referencial Teórico
 ---
 - Fundamentos do Desenho Orientado a Objeto com UML. Meilir Page-Jones
 - Spring Boot, da API REST aos Microservices. Michelli Brito.
