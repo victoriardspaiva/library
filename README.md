@@ -11,7 +11,7 @@
 - [Objetivos Gerais](#objetivos-gerais)
 - [Tecnologias](#-tecnologias)
 - [Objetivos na implementação](#objetivos-na-implementação)
-- [Arquitetura](#-arquitetura)
+- [Arquitetura de diretório](#-arquitetura)
 - [Orientações](#-orientações)
    - [Pré-requisitos](#-pré-requisitos)
    - [Rodando o Back End (servidor)](#-rodando-o-back-end-servidor)
@@ -25,7 +25,7 @@
 Para o gerenciamento e catatolagação de livros de sua biblioteca pessoal foi realizado projeto de uma API RESTful para por em prática estudo voltado para desenvolvimento backend, usando ecossistema Spring Framework.
 
 ### 💾 Objetivo Gerais
-Desenvolver uma API segundo o modelo de Maturidade do Richardson que segue 4 niveis afim de conseguir construir uma API RESTful:
+Desenvolver uma API segundo o Modelo de Maturidade do Leonard Richardson que segue 4 níveis afim de conseguir construir uma API RESTful:
 - [x] Nível 0: Utilizar o protocolo HTTP como mecanismo de comunicação;
 - [x] Nível 1: Definir bem, de forma única cada recurso e com substantivos cadas recurso;
 - [x] Nível 2: Definir bem o protocolo HTTP e o tipos de retornos possiveis da requisição;
@@ -36,6 +36,7 @@ Desenvolver uma API segundo o modelo de Maturidade do Richardson que segue 4 niv
 ---
 As seguintes ferramentas foram usadas na construção do projeto:
 
+- Java;
 - Sring Boot;
 - Spring Data JPA;
 - Swagger Open API;
@@ -47,10 +48,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [x] Documentação via Swagger;
 - [x] Cobertura de testes acima de 80%;
 - [x] Retornos usando de paginação;
-- [x] Exception Pattern;
-- [x] Stream API.
+- [x] Usar Exception Pattern;
+- [x] Usar Stream API.
       
-### 🧱 Arquitetura
+### 🧱 Arquitetura do diretório
 ---
 ```
 📂 assets
